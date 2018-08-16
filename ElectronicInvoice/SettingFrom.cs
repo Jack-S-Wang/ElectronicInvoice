@@ -20,7 +20,7 @@ namespace ElectronicInvoice
 
         private void SettingFrom_Load(object sender, EventArgs e)
         {
-           try
+            try
             {
                 using (FileStream file = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ElectronicInvoice\\PrintUrl.xml", FileMode.OpenOrCreate))
                 {
@@ -32,7 +32,7 @@ namespace ElectronicInvoice
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -56,9 +56,12 @@ namespace ElectronicInvoice
                         url = url
                     };
                     xml.Serialize(file, p);
-                    MessageBox.Show("修改成功!");
                 }
-            }catch(Exception ex)
+                PrintSet.amend = true;
+                MessageBox.Show("修改成功!");
+                this.Close();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

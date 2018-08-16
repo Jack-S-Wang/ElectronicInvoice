@@ -96,7 +96,7 @@
             this.txb_url.Name = "txb_url";
             this.txb_url.Size = new System.Drawing.Size(466, 32);
             this.txb_url.TabIndex = 1;
-            this.txb_url.Text = "http://yun.dascomyun.cn/cloudprint/";
+            this.txb_url.Text = "https://yun.dascomyun.cn/cloudprint/";
             // 
             // label1
             // 

@@ -39,15 +39,11 @@ namespace ElectronicInvoice
                         printNumber = result.number;
                     }
                 }
-                using (FileStream file = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ElectronicInvoice\\PrintUrl.xml", FileMode.OpenOrCreate))
-                {
-                    if (file.Length > 0)
-                    {
-                        XmlSerializer xml = new XmlSerializer(typeof(PrintUrl));
-                        var result = xml.Deserialize(file) as PrintUrl;
-                        url = result.url;
-                    }
-                }
+                PrintSet.amend = true;
+                System.Timers.Timer ti = new System.Timers.Timer(2000);
+                ti.Enabled = true;
+                ti.Elapsed += Ti_Elapsed;
+                
                 
                 this.btn_min.Image = this.imageList1.Images[2];
                 this.btn_out.Image = this.imageList1.Images[3];
@@ -70,6 +66,26 @@ namespace ElectronicInvoice
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Ti_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            if (IsHandleCreated)
+            {
+                if (PrintSet.amend)
+                {
+                    PrintSet.amend = false;
+                    using (FileStream file = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ElectronicInvoice\\PrintUrl.xml", FileMode.OpenOrCreate))
+                    {
+                        if (file.Length > 0)
+                        {
+                            XmlSerializer xml = new XmlSerializer(typeof(PrintUrl));
+                            var result = xml.Deserialize(file) as PrintUrl;
+                            url = result.url;
+                        }
+                    }
+                }
             }
         }
 
@@ -170,7 +186,7 @@ namespace ElectronicInvoice
         {
             try
             {
-                //http://yun.dascomyun.cn/cloudprint/
+                //https://yun.dascomyun.cn/cloudprint/
                 if (this.lv_img.Items.Count > 0)
                 {
                     if (this.txb_number.Text == "")
@@ -413,5 +429,9 @@ namespace ElectronicInvoice
     public class PrintUrl
     {
         public string url { get; set; }
+    }
+    public class PrintSet
+    {
+        public static bool amend { get; set; }
     }
 }
