@@ -32,10 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.lb_color = new System.Windows.Forms.Label();
-            this.btn_setting = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.btn_out = new System.Windows.Forms.Button();
+            this.btn_setting = new System.Windows.Forms.Button();
             this.btn_min = new System.Windows.Forms.Button();
             this.btn_max = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -56,7 +57,6 @@
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_goOut = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -97,22 +97,6 @@
             this.lb_color.TabIndex = 6;
             this.lb_color.Text = "------------";
             // 
-            // btn_setting
-            // 
-            this.btn_setting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_setting.FlatAppearance.BorderSize = 0;
-            this.btn_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_setting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_setting.ForeColor = System.Drawing.Color.White;
-            this.btn_setting.Location = new System.Drawing.Point(50, 26);
-            this.btn_setting.Name = "btn_setting";
-            this.btn_setting.Size = new System.Drawing.Size(20, 20);
-            this.btn_setting.TabIndex = 4;
-            this.btn_setting.UseVisualStyleBackColor = true;
-            this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
-            this.btn_setting.MouseLeave += new System.EventHandler(this.btn_setting_MouseLeave);
-            this.btn_setting.MouseHover += new System.EventHandler(this.btn_setting_MouseHover);
-            // 
             // panel2
             // 
             this.panel2.AutoSize = true;
@@ -135,6 +119,17 @@
             this.panel3.Size = new System.Drawing.Size(246, 53);
             this.panel3.TabIndex = 3;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 20F);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(76, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(26, 27);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "|";
+            // 
             // btn_out
             // 
             this.btn_out.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -146,6 +141,22 @@
             this.btn_out.TabIndex = 2;
             this.btn_out.UseVisualStyleBackColor = true;
             this.btn_out.Click += new System.EventHandler(this.btn_out_Click);
+            // 
+            // btn_setting
+            // 
+            this.btn_setting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_setting.FlatAppearance.BorderSize = 0;
+            this.btn_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_setting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_setting.ForeColor = System.Drawing.Color.White;
+            this.btn_setting.Location = new System.Drawing.Point(50, 26);
+            this.btn_setting.Name = "btn_setting";
+            this.btn_setting.Size = new System.Drawing.Size(20, 20);
+            this.btn_setting.TabIndex = 4;
+            this.btn_setting.UseVisualStyleBackColor = true;
+            this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
+            this.btn_setting.MouseLeave += new System.EventHandler(this.btn_setting_MouseLeave);
+            this.btn_setting.MouseHover += new System.EventHandler(this.btn_setting_MouseHover);
             // 
             // btn_min
             // 
@@ -372,17 +383,6 @@
             this.btn_add.Text = "添加";
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 20F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(76, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 27);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "|";
             // 
             // Form1
             // 
