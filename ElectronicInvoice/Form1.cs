@@ -83,7 +83,11 @@ namespace ElectronicInvoice
                             XmlSerializer xml = new XmlSerializer(typeof(PrintUrl));
                             var result = xml.Deserialize(file) as PrintUrl;
                             url = result.url;
+                        }else
+                        {
+                            url = "https://yun.dascomyun.cn/cloudprint/";
                         }
+
                     }
                 }
             }
