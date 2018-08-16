@@ -34,7 +34,6 @@
             this.lb_color = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
             this.btn_out = new System.Windows.Forms.Button();
             this.btn_setting = new System.Windows.Forms.Button();
             this.btn_min = new System.Windows.Forms.Button();
@@ -57,6 +56,7 @@
             this.btn_clear = new System.Windows.Forms.Button();
             this.btn_goOut = new System.Windows.Forms.Button();
             this.btn_add = new System.Windows.Forms.Button();
+            this.lb_color2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -69,8 +69,11 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lb_color2);
             this.panel1.Controls.Add(this.lb_color);
             this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.btn_setting);
             this.panel1.Controls.Add(this.btn_help);
             this.panel1.Controls.Add(this.txb_number);
             this.panel1.Controls.Add(this.label2);
@@ -80,7 +83,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1521, 78);
+            this.panel1.Size = new System.Drawing.Size(1521, 94);
             this.panel1.TabIndex = 0;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
@@ -91,7 +94,7 @@
             this.lb_color.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lb_color.Font = new System.Drawing.Font("宋体", 9F);
             this.lb_color.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.lb_color.Location = new System.Drawing.Point(915, 66);
+            this.lb_color.Location = new System.Drawing.Point(915, 75);
             this.lb_color.Name = "lb_color";
             this.lb_color.Size = new System.Drawing.Size(77, 12);
             this.lb_color.TabIndex = 6;
@@ -102,42 +105,29 @@
             this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1163, 0);
+            this.panel2.Location = new System.Drawing.Point(1161, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(358, 78);
+            this.panel2.Size = new System.Drawing.Size(358, 92);
             this.panel2.TabIndex = 5;
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.btn_out);
-            this.panel3.Controls.Add(this.btn_setting);
             this.panel3.Controls.Add(this.btn_min);
             this.panel3.Controls.Add(this.btn_max);
-            this.panel3.Location = new System.Drawing.Point(109, 13);
+            this.panel3.Location = new System.Drawing.Point(109, 20);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(246, 53);
             this.panel3.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 20F);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(76, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 27);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "|";
             // 
             // btn_out
             // 
             this.btn_out.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_out.FlatAppearance.BorderSize = 0;
             this.btn_out.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_out.Location = new System.Drawing.Point(212, 27);
+            this.btn_out.Location = new System.Drawing.Point(206, 19);
             this.btn_out.Name = "btn_out";
-            this.btn_out.Size = new System.Drawing.Size(18, 18);
+            this.btn_out.Size = new System.Drawing.Size(30, 30);
             this.btn_out.TabIndex = 2;
             this.btn_out.UseVisualStyleBackColor = true;
             this.btn_out.Click += new System.EventHandler(this.btn_out_Click);
@@ -149,10 +139,11 @@
             this.btn_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_setting.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_setting.ForeColor = System.Drawing.Color.White;
-            this.btn_setting.Location = new System.Drawing.Point(50, 26);
+            this.btn_setting.Location = new System.Drawing.Point(1021, 44);
             this.btn_setting.Name = "btn_setting";
-            this.btn_setting.Size = new System.Drawing.Size(20, 20);
+            this.btn_setting.Size = new System.Drawing.Size(75, 28);
             this.btn_setting.TabIndex = 4;
+            this.btn_setting.Text = "设置";
             this.btn_setting.UseVisualStyleBackColor = true;
             this.btn_setting.Click += new System.EventHandler(this.btn_setting_Click);
             this.btn_setting.MouseLeave += new System.EventHandler(this.btn_setting_MouseLeave);
@@ -163,9 +154,9 @@
             this.btn_min.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_min.FlatAppearance.BorderSize = 0;
             this.btn_min.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_min.Location = new System.Drawing.Point(121, 31);
+            this.btn_min.Location = new System.Drawing.Point(107, 19);
             this.btn_min.Name = "btn_min";
-            this.btn_min.Size = new System.Drawing.Size(17, 14);
+            this.btn_min.Size = new System.Drawing.Size(30, 30);
             this.btn_min.TabIndex = 0;
             this.btn_min.UseVisualStyleBackColor = true;
             this.btn_min.Click += new System.EventHandler(this.btn_min_Click);
@@ -176,9 +167,9 @@
             this.btn_max.FlatAppearance.BorderSize = 0;
             this.btn_max.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_max.ImageList = this.imageList1;
-            this.btn_max.Location = new System.Drawing.Point(166, 27);
+            this.btn_max.Location = new System.Drawing.Point(158, 19);
             this.btn_max.Name = "btn_max";
-            this.btn_max.Size = new System.Drawing.Size(18, 18);
+            this.btn_max.Size = new System.Drawing.Size(30, 30);
             this.btn_max.TabIndex = 1;
             this.btn_max.UseVisualStyleBackColor = true;
             this.btn_max.Click += new System.EventHandler(this.btn_max_Click);
@@ -187,11 +178,10 @@
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "正常.png");
-            this.imageList1.Images.SetKeyName(1, "最大化.png");
-            this.imageList1.Images.SetKeyName(2, "缩小.png");
-            this.imageList1.Images.SetKeyName(3, "退出.png");
-            this.imageList1.Images.SetKeyName(4, "设置自画图.png");
+            this.imageList1.Images.SetKeyName(0, "最大化白色 - 副本 (2).png");
+            this.imageList1.Images.SetKeyName(1, "还原白色 - 副本 (2).png");
+            this.imageList1.Images.SetKeyName(2, "缩小白色 - 副本 (2).png");
+            this.imageList1.Images.SetKeyName(3, "关  闭白色 - 副本 (2).png");
             // 
             // btn_help
             // 
@@ -201,7 +191,7 @@
             this.btn_help.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_help.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_help.ForeColor = System.Drawing.Color.White;
-            this.btn_help.Location = new System.Drawing.Point(917, 35);
+            this.btn_help.Location = new System.Drawing.Point(917, 44);
             this.btn_help.Name = "btn_help";
             this.btn_help.Size = new System.Drawing.Size(75, 28);
             this.btn_help.TabIndex = 4;
@@ -214,7 +204,7 @@
             // txb_number
             // 
             this.txb_number.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txb_number.Location = new System.Drawing.Point(631, 37);
+            this.txb_number.Location = new System.Drawing.Point(631, 44);
             this.txb_number.Name = "txb_number";
             this.txb_number.Size = new System.Drawing.Size(240, 29);
             this.txb_number.TabIndex = 3;
@@ -223,7 +213,8 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(514, 40);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(514, 47);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 22);
             this.label2.TabIndex = 2;
@@ -232,31 +223,35 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(109, 35);
+            this.label1.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(98, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 28);
+            this.label1.Size = new System.Drawing.Size(249, 39);
             this.label1.TabIndex = 1;
-            this.label1.Text = "得实电子发票打印PC端";
+            this.label1.Text = "得实电子发票打印";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::ElectronicInvoice.Properties.Resources.得实图标;
-            this.pictureBox1.Location = new System.Drawing.Point(54, 27);
+            this.pictureBox1.Image = global::ElectronicInvoice.Properties.Resources.得实logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 9);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(49, 48);
+            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // panel4
             // 
             this.panel4.AutoSize = true;
+            this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel4.Controls.Add(this.lv_log);
             this.panel4.Controls.Add(this.lv_img);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 78);
+            this.panel4.Location = new System.Drawing.Point(0, 94);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1521, 513);
+            this.panel4.Size = new System.Drawing.Size(1521, 497);
             this.panel4.TabIndex = 1;
             // 
             // lv_log
@@ -270,7 +265,7 @@
             this.lv_log.GridLines = true;
             this.lv_log.Location = new System.Drawing.Point(1181, 9);
             this.lv_log.Name = "lv_log";
-            this.lv_log.Size = new System.Drawing.Size(319, 390);
+            this.lv_log.Size = new System.Drawing.Size(317, 372);
             this.lv_log.TabIndex = 1;
             this.lv_log.UseCompatibleStateImageBehavior = false;
             this.lv_log.View = System.Windows.Forms.View.Details;
@@ -292,7 +287,7 @@
             this.lv_img.GridLines = true;
             this.lv_img.Location = new System.Drawing.Point(12, 9);
             this.lv_img.Name = "lv_img";
-            this.lv_img.Size = new System.Drawing.Size(1163, 391);
+            this.lv_img.Size = new System.Drawing.Size(1163, 373);
             this.lv_img.TabIndex = 0;
             this.lv_img.UseCompatibleStateImageBehavior = false;
             this.lv_img.View = System.Windows.Forms.View.Details;
@@ -314,6 +309,8 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.btn_print);
             this.panel5.Controls.Add(this.btn_clear);
             this.panel5.Controls.Add(this.btn_goOut);
@@ -326,7 +323,7 @@
             // 
             // btn_print
             // 
-            this.btn_print.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_print.BackColor = System.Drawing.Color.Red;
             this.btn_print.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_print.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_print.Font = new System.Drawing.Font("微软雅黑", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -384,6 +381,18 @@
             this.btn_add.UseVisualStyleBackColor = false;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
+            // lb_color2
+            // 
+            this.lb_color2.AutoSize = true;
+            this.lb_color2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lb_color2.Font = new System.Drawing.Font("宋体", 9F);
+            this.lb_color2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lb_color2.Location = new System.Drawing.Point(1019, 75);
+            this.lb_color2.Name = "lb_color2";
+            this.lb_color2.Size = new System.Drawing.Size(77, 12);
+            this.lb_color2.TabIndex = 7;
+            this.lb_color2.Text = "------------";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -400,7 +409,6 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -437,6 +445,6 @@
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.Label lb_color;
         private System.Windows.Forms.Button btn_setting;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lb_color2;
     }
 }

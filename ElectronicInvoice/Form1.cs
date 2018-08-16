@@ -48,19 +48,20 @@ namespace ElectronicInvoice
                         url = result.url;
                     }
                 }
-                this.btn_max.Image = this.imageList1.Images[0];
+                
                 this.btn_min.Image = this.imageList1.Images[2];
                 this.btn_out.Image = this.imageList1.Images[3];
-                this.btn_setting.Image = this.imageList1.Images[4];
                 
                 tool.SetToolTip(this.btn_min, "缩小");
                 tool.SetToolTip(this.btn_out, "退出");
                 tool.SetToolTip(this.btn_setting, "设置");
                 if (this.WindowState == FormWindowState.Normal)
                 {
+                    this.btn_max.Image = this.imageList1.Images[0];
                     tool.SetToolTip(this.btn_max, "放大");
                 }else if(this.WindowState == FormWindowState.Maximized)
                 {
+                    this.btn_max.Image = this.imageList1.Images[1];
                     tool.SetToolTip(this.btn_max, "向下还原");
                 }
 
@@ -201,7 +202,7 @@ namespace ElectronicInvoice
                         //当再次打印时清除所有的打印结果
                         lv_log.Items.Clear();
                     }
-                    Uri uri = new Uri(url + "" + number);
+                    Uri uri = new Uri(url + "v1.0/print/" + number);
                     for (int i = 0; i < lv_img.Items.Count; i++)
                     {
                         var conect = lv_img.Items[i].SubItems[1].Text.Split('.');
@@ -383,12 +384,26 @@ namespace ElectronicInvoice
 
         private void btn_setting_MouseHover(object sender, EventArgs e)
         {
-           
+            try
+            {
+                this.lb_color2.ForeColor = Color.Lime;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_setting_MouseLeave(object sender, EventArgs e)
         {
-          
+            try
+            {
+                this.lb_color2.ForeColor = Color.FromArgb(128, 128, 255);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
     public class PrintNumber

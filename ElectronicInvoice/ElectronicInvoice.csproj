@@ -120,6 +120,7 @@
   <ItemGroup>
     <None Include="Resources\设置.png" />
     <Content Include="favicon-20180808050452939.ico" />
+    <None Include="Resources\得实logo.png" />
     <Content Include="电子发票快捷打印说明.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -30,10 +30,10 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txb_url = new System.Windows.Forms.TextBox();
-            this.btn_save = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
+            this.btn_save = new System.Windows.Forms.Button();
+            this.txb_url = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,26 +57,22 @@
             this.groupBox1.Size = new System.Drawing.Size(823, 460);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "修改界面";
+            this.groupBox1.Text = "界面";
             // 
-            // label1
+            // btn_close
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 16F);
-            this.label1.Location = new System.Drawing.Point(56, 151);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "电子发票打印域名地址：";
-            // 
-            // txb_url
-            // 
-            this.txb_url.Font = new System.Drawing.Font("宋体", 16F);
-            this.txb_url.Location = new System.Drawing.Point(314, 148);
-            this.txb_url.Name = "txb_url";
-            this.txb_url.Size = new System.Drawing.Size(466, 32);
-            this.txb_url.TabIndex = 1;
-            this.txb_url.Text = "http://yun.dascomyun.cn/cloudprint/v1.0/print/";
+            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btn_close.FlatAppearance.BorderSize = 0;
+            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_close.Font = new System.Drawing.Font("宋体", 13F);
+            this.btn_close.ForeColor = System.Drawing.Color.White;
+            this.btn_close.Location = new System.Drawing.Point(543, 336);
+            this.btn_close.Name = "btn_close";
+            this.btn_close.Size = new System.Drawing.Size(75, 32);
+            this.btn_close.TabIndex = 3;
+            this.btn_close.Text = "取消";
+            this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // btn_save
             // 
@@ -93,20 +89,24 @@
             this.btn_save.UseVisualStyleBackColor = false;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
             // 
-            // btn_close
+            // txb_url
             // 
-            this.btn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btn_close.FlatAppearance.BorderSize = 0;
-            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_close.Font = new System.Drawing.Font("宋体", 13F);
-            this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(543, 336);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(75, 32);
-            this.btn_close.TabIndex = 3;
-            this.btn_close.Text = "取消";
-            this.btn_close.UseVisualStyleBackColor = false;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            this.txb_url.Font = new System.Drawing.Font("宋体", 16F);
+            this.txb_url.Location = new System.Drawing.Point(314, 148);
+            this.txb_url.Name = "txb_url";
+            this.txb_url.Size = new System.Drawing.Size(466, 32);
+            this.txb_url.TabIndex = 1;
+            this.txb_url.Text = "http://yun.dascomyun.cn/cloudprint/";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 16F);
+            this.label1.Location = new System.Drawing.Point(56, 151);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(252, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "电子发票打印域名地址：";
             // 
             // SettingFrom
             // 
