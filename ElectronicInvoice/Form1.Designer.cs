@@ -219,6 +219,7 @@
             this.txb_number.Name = "txb_number";
             this.txb_number.Size = new System.Drawing.Size(240, 29);
             this.txb_number.TabIndex = 3;
+            this.txb_number.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txb_number_KeyPress);
             // 
             // label2
             // 

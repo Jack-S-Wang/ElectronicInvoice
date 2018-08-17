@@ -43,11 +43,11 @@ namespace ElectronicInvoice
                 System.Timers.Timer ti = new System.Timers.Timer(2000);
                 ti.Enabled = true;
                 ti.Elapsed += Ti_Elapsed;
-                
-                
+
+
                 this.btn_min.Image = this.imageList1.Images[2];
                 this.btn_out.Image = this.imageList1.Images[3];
-                
+
                 tool.SetToolTip(this.btn_min, "缩小");
                 tool.SetToolTip(this.btn_out, "退出");
                 tool.SetToolTip(this.btn_setting, "设置");
@@ -55,7 +55,8 @@ namespace ElectronicInvoice
                 {
                     this.btn_max.Image = this.imageList1.Images[0];
                     tool.SetToolTip(this.btn_max, "放大");
-                }else if(this.WindowState == FormWindowState.Maximized)
+                }
+                else if (this.WindowState == FormWindowState.Maximized)
                 {
                     this.btn_max.Image = this.imageList1.Images[1];
                     tool.SetToolTip(this.btn_max, "向下还原");
@@ -83,7 +84,8 @@ namespace ElectronicInvoice
                             XmlSerializer xml = new XmlSerializer(typeof(PrintUrl));
                             var result = xml.Deserialize(file) as PrintUrl;
                             url = result.url;
-                        }else
+                        }
+                        else
                         {
                             url = "https://yun.dascomyun.cn/cloudprint/";
                         }
@@ -100,7 +102,7 @@ namespace ElectronicInvoice
 
         private void btn_max_Click(object sender, EventArgs e)
         {
-            
+
             if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
@@ -198,6 +200,11 @@ namespace ElectronicInvoice
                         MessageBox.Show("打印机序列号值不能为空,请输入！");
                         return;
                     }
+                    if (this.txb_number.Text.Length != 16)
+                    {
+                        MessageBox.Show("打印机序列号值由16个字母数字组合而成！");
+                        return;
+                    }
                     var number = txb_number.Text.Trim();
                     if (number != printNumber)
                     {
@@ -252,65 +259,89 @@ namespace ElectronicInvoice
                             stream.Write(data, 0, data.Length);
                         }
 
-                        var response = request.GetResponse() as HttpWebResponse;
-                        using (var strR = new StreamReader(response.GetResponseStream()))
+                        try
                         {
-                            string json = strR.ReadToEnd();
-                            JObject str = JObject.Parse(json);
-                            string codePrint = (string)str["code"];
-                            var jds = str["data"];
-                            ListViewItem itemv = new ListViewItem();
-                            switch (codePrint)
+                            var response = request.GetResponse() as HttpWebResponse;
+                            using (var strR = new StreamReader(response.GetResponseStream()))
                             {
-                                case "0":
-                                    string it = "";
-                                    foreach (var item in jds)
-                                    {
-                                        it += item + ";";
-                                    }
-                                    itemv.Text = it;
-                                    break;
-                                case "1000":
-                                    itemv.Text = "服务打印失败";
-                                    break;
-                                case "1001":
-                                    itemv.Text = "文件类型错误";
-                                    break;
-                                case "1002":
-                                    itemv.Text = "缺少请求头";
-                                    break;
-                                case "1003":
-                                    itemv.Text = "源文件为空";
-                                    break;
-                                case "1100":
-                                    itemv.Text = "设备不存在";
-                                    break;
-                                case "1101":
-                                    itemv.Text = "设备繁忙，被占用";
-                                    break;
-                                case "1102":
-                                    itemv.Text = "设备状态错误";
-                                    break;
-                                case "1103":
-                                    itemv.Text = "设备状态不能打印";
-                                    break;
-                                case "1104":
-                                    itemv.Text = "设备暂停打印";
-                                    break;
-                                case "1105":
-                                    itemv.Text = "设备不在工作时间";
-                                    break;
-                                case "1106":
-                                    itemv.Text = "设备信息有误";
-                                    break;
-                                case "1121":
-                                    itemv.Text = "转换服务错误";
-                                    break;
-                                default:
-                                    itemv.Text = "未知状态码" + codePrint;
-                                    break;
+                                string json = strR.ReadToEnd();
+                                JObject str = JObject.Parse(json);
+                                string codePrint = (string)str["code"];
+                                var jds = str["data"];
+                                ListViewItem itemv = new ListViewItem();
+                                string it = "";
+                                foreach (var item in jds)
+                                {
+                                    it += item + ";";
+                                }
+                                itemv.Text = it;
+                                lv_log.Items.Add(itemv);
                             }
-                            lv_log.Items.Add(itemv);
+                        }
+                        catch (WebException hex)
+                        {
+                            if (hex.Status == WebExceptionStatus.ProtocolError)
+                            {
+                                var hrs = hex.Response as HttpWebResponse;
+                                ListViewItem itemv = new ListViewItem();
+                                if (hrs.StatusCode == HttpStatusCode.Forbidden)
+                                {
+                                    var rs = hrs.GetResponseStream();
+                                    var tr = new StreamReader(rs);
+                                    var text = tr.ReadToEnd();
+                                    JObject str = JObject.Parse(text);
+                                    string codePrint = (string)str["code"];
+                                    var jds = str["data"];
+                                    switch (codePrint)
+                                    {
+                                        case "1000":
+                                            itemv.Text = "服务打印失败";
+                                            break;
+                                        case "1001":
+                                            itemv.Text = "文件类型错误";
+                                            break;
+                                        case "1002":
+                                            itemv.Text = "缺少请求头";
+                                            break;
+                                        case "1003":
+                                            itemv.Text = "源文件为空";
+                                            break;
+                                        case "1100":
+                                            itemv.Text = "设备不存在";
+                                            break;
+                                        case "1101":
+                                            itemv.Text = "设备繁忙，被占用";
+                                            break;
+                                        case "1102":
+                                            itemv.Text = "设备状态错误";
+                                            break;
+                                        case "1103":
+                                            itemv.Text = "设备状态不能打印";
+                                            break;
+                                        case "1104":
+                                            itemv.Text = "设备暂停打印";
+                                            break;
+                                        case "1105":
+                                            itemv.Text = "设备不在工作时间";
+                                            break;
+                                        case "1106":
+                                            itemv.Text = "设备信息有误";
+                                            break;
+                                        case "1121":
+                                            itemv.Text = "转换服务错误";
+                                            break;
+                                        default:
+                                            itemv.Text = "未知状态码" + codePrint;
+                                            break;
+                                    }
+
+                                }
+                                else
+                                {
+                                    itemv.Text = "请求未响应！" + hex.Message;
+                                }
+                                lv_log.Items.Add(itemv);
+                            }
                         }
                     }
                 }
@@ -419,6 +450,23 @@ namespace ElectronicInvoice
             try
             {
                 this.lb_color2.ForeColor = Color.FromArgb(128, 128, 255);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+        private void txb_number_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar < 65 || e.KeyChar > 70) && (e.KeyChar < 97 || e.KeyChar > 102)
+                     && e.KeyChar != 8)
+                {
+                    e.Handled = true;
+                }
             }
             catch (Exception ex)
             {
