@@ -200,12 +200,20 @@ namespace ElectronicInvoice
                         MessageBox.Show("打印机序列号值不能为空,请输入！");
                         return;
                     }
-                    if (this.txb_number.Text.Length != 16)
+                    var number = txb_number.Text.Trim();
+                    if (number.Length != 16)
                     {
                         MessageBox.Show("打印机序列号值由16个字母数字组合而成！");
                         return;
                     }
-                    var number = txb_number.Text.Trim();
+                    for(int i = 0; i < 16; i++)
+                    {
+                        if((number[i] < 48 || number[i] > 57) && (number[i] < 65 || number[i] > 70) && (number[i] < 97 || number[i] > 102))
+                        {
+                            MessageBox.Show("有非16进制值的存在，不符合序列号，请重新确认再输入！");
+                            return;
+                        }
+                    }
                     if (number != printNumber)
                     {
                         using (FileStream file = new FileStream(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ElectronicInvoice\\PrintNumber.xml", FileMode.OpenOrCreate))
@@ -428,18 +436,18 @@ namespace ElectronicInvoice
 
         private void txb_number_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar < 65 || e.KeyChar > 70) && (e.KeyChar < 97 || e.KeyChar > 102)
-                     && e.KeyChar != 8)
-                {
-                    e.Handled = true;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //try
+            //{
+            //    if ((e.KeyChar < 48 || e.KeyChar > 57) && (e.KeyChar < 65 || e.KeyChar > 70) && (e.KeyChar < 97 || e.KeyChar > 102)
+            //         && e.KeyChar != 8)
+            //    {
+            //        e.Handled = true;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
     public class PrintNumber
