@@ -292,48 +292,16 @@ namespace ElectronicInvoice
                                     JObject str = JObject.Parse(text);
                                     string codePrint = (string)str["code"];
                                     var jds = str["data"];
-                                    switch (codePrint)
+                                    string it = "";
+                                    foreach (var item in jds)
                                     {
-                                        case "1000":
-                                            itemv.Text = "服务打印失败";
-                                            break;
-                                        case "1001":
-                                            itemv.Text = "文件类型错误";
-                                            break;
-                                        case "1002":
-                                            itemv.Text = "缺少请求头";
-                                            break;
-                                        case "1003":
-                                            itemv.Text = "源文件为空";
-                                            break;
-                                        case "1100":
-                                            itemv.Text = "设备不存在";
-                                            break;
-                                        case "1101":
-                                            itemv.Text = "设备繁忙，被占用";
-                                            break;
-                                        case "1102":
-                                            itemv.Text = "设备状态错误";
-                                            break;
-                                        case "1103":
-                                            itemv.Text = "设备状态不能打印";
-                                            break;
-                                        case "1104":
-                                            itemv.Text = "设备暂停打印";
-                                            break;
-                                        case "1105":
-                                            itemv.Text = "设备不在工作时间";
-                                            break;
-                                        case "1106":
-                                            itemv.Text = "设备信息有误";
-                                            break;
-                                        case "1121":
-                                            itemv.Text = "转换服务错误";
-                                            break;
-                                        default:
-                                            itemv.Text = "未知状态码" + codePrint;
-                                            break;
+                                        it += item + ";";
                                     }
+                                    if (it == "")
+                                    {
+                                        it = (string)jds;
+                                    }
+                                    itemv.Text = it;
 
                                 }
                                 else
